@@ -1,7 +1,7 @@
 /*Stiamo lavorando a un programma che deve gestire eventi (ad esempio concerti, 
 conferenze, spettacoli etc.).
  
-
+STEP 1
 V1. Creare una classe Evento che abbia le seguenti proprietà:
 	-  titolo -  data -  numero di posti in totale -  numero di posti prenotati 
 --> Quando si istanzia un nuovo evento questi attributi devono essere tutti valorizzati nel 
@@ -24,5 +24,23 @@ prenotazioni restituisce un messaggio di avviso.
 V-  l’override del metodo toString()  in modo che venga  restituita una stringa contenente: 
 data formattata - titolo 
 Aggiungete eventuali metodi (public e private) che vi aiutino a svolgere le funzioni richieste.
+===============================================================================================
+STEP 2
+
+Creare una classe Main di test, in cui si chiede all’utente di inserire un nuovo evento con tutti i parametri.
+Dopo che l’evento è stato istanziato, chiedere all’utente se e quante prenotazioni vuole fare e provare ad effettuarle, implementando opportuni controlli
+Stampare a video il numero di posti prenotati e quelli disponibili
+Chiedere all’utente se e quanti posti vuole disdire
+Provare ad effettuare le disdette, implementando opportuni controlli
+Stampare a video il numero di posti prenotati e quelli disponibili
+===============================================================================================
+Step 3
+
+Creare una classe Concerto che estende Evento, che ha anche gli attributi :
+ora (LocalTime)
+prezzo
+Aggiungere questi attributi nel costruttore e implementarne getter e setter.
+Aggiungere i metodi per restituire data e ora formattata e prezzo formattato (##,##€) Fare l’ override del metodo toString() in modo che venga restituita una stringa del tipo: data e ora formattata - titolo - prezzo formattato
+
 
 */

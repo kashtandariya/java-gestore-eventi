@@ -2,7 +2,7 @@ package org.milestone;
 
 import java.time.LocalDate; //importa classe LocalDate aaaa/mm/gg
 
-//classe evento con relativi attributi
+//classe evento con relativi attributi con visibilità privata
 public class Evento {
 	private String titolo;
 	private LocalDate data;
@@ -17,7 +17,7 @@ public class Evento {
 	this.postiPrenotati = 0;
 	}
 	
-	//getter e setter per proteggere i dati sensibili, incapsuliamo
+	//incapsuliamo con getter e setter per proteggere i nostri dati
 	public String getTitolo() {
 		return titolo;
 	}
@@ -41,4 +41,30 @@ public class Evento {
 	public int getPostiPrenotati() {
 		return postiPrenotati;
 	}
+	
+	//Metodo per prenotare un posto
+    public void prenota() {
+        if (LocalDate.now().isAfter(data) || postiPrenotati >= postiTotali) {
+            System.out.println("Impossibile prenotare. L'evento è già passato o non ci sono più posti disponibili.");
+            return;
+        }
+        postiPrenotati++;
+        System.out.println("Prenotazione effettuata con successo per l'evento: " + titolo);
+    }
+
+    //Metodo per disdire una prenotazione
+    public void disdici() {
+        if (LocalDate.now().isAfter(data) || postiPrenotati <= 0) {
+            System.out.println("Impossibile disdire la prenotazione. L'evento è già passato o non ci sono prenotazioni.");
+            return;
+        }
+        postiPrenotati--;
+        System.out.println("Prenotazione annullata con successo per l'evento: " + titolo);
+    }
+
+    // Override del metodo toString()
+    @Override
+    public String toString() {
+        return data.toString() + " - " + titolo;
+    }
 }

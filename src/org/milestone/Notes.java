@@ -36,11 +36,13 @@ V Stampare a video il numero di posti prenotati e quelli disponibili
 ===============================================================================================
 Step 3
 
-Creare una classe Concerto che estende Evento, che ha anche gli attributi :
-ora (LocalTime)
-prezzo
-Aggiungere questi attributi nel costruttore e implementarne getter e setter.
-Aggiungere i metodi per restituire data e ora formattata e prezzo formattato (##,##€) Fare l’ override del metodo toString() in modo che venga restituita una stringa del tipo: data e ora formattata - titolo - prezzo formattato
+V Creare una classe Concerto che estende Evento, che ha anche gli attributi :
+V ora (LocalTime)
+V prezzo
+V Aggiungere questi attributi nel costruttore e implementarne getter e setter.
+V Aggiungere i metodi per restituire data e ora formattata e prezzo formattato (##,##€)
+VFare l’ override del metodo toString() in modo che venga restituita una stringa del tipo:
+V data e ora formattata - titolo - prezzo formattato
 
 
 */

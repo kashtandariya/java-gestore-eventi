@@ -13,5 +13,40 @@ public class Concerto extends Evento {
         this.ora = ora;
         this.prezzo = prezzo;
     }
+    
+    public LocalTime getOra() {
+        return ora;
+    }
+
+    public void setOra(LocalTime ora) {
+        this.ora = ora;
+    }
+
+    public double getPrezzo() {
+        return prezzo;
+    }
+    
+    //Metodo data formattata
+    public String getDataFormattata() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return getData().format(formatter);
+    }
+
+    // Metodo ora formattata
+    public String getOraFormattata() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return ora.format(formatter);
+    }
+    
+    //Metodo prezzo formattato
+    public String getPrezzoFormattato() {
+        return String.format("%.2f€", prezzo);
+    }
+
+    //Override del metodo toString()
+    @Override
+    public String toString() {
+        return getDataFormattata() + " " + getOraFormattata() + " - " + getTitolo() + " - " + getPrezzoFormattato();
+    }
 
 }

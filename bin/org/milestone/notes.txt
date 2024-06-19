@@ -1,4 +1,4 @@
-/*Stiamo lavorando a un programma che deve gestire eventi (ad esempio concerti, 
+Stiamo lavorando a un programma che deve gestire eventi (ad esempio concerti, 
 conferenze, spettacoli etc.).
  
 STEP 1

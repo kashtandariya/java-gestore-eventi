@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 public class Concerto extends Evento {
 	private LocalTime ora;
     private double prezzo;
+    private Artista artista;
 
     public Concerto(String titolo, LocalDate data, int postiTotali, LocalTime ora, double prezzo) {
         super(titolo, data, postiTotali);
@@ -24,6 +25,10 @@ public class Concerto extends Evento {
 
     public double getPrezzo() {
         return prezzo;
+    }
+    
+    public Artista getArtista() {
+    	return artista;
     }
     
     //Metodo data formattata
@@ -46,7 +51,7 @@ public class Concerto extends Evento {
     //Override del metodo toString()
     @Override
     public String toString() {
-        return getDataFormattata() + " " + getOraFormattata() + " - " + getTitolo() + " - " + getPrezzoFormattato();
+        return getDataFormattata() + " " + getOraFormattata() + " - " + getTitolo() + " - " + getPrezzoFormattato() + " - " + getArtista();
     }
 
 }

@@ -26,6 +26,12 @@ public class UsoEvento {
 	        
 	        //Istanziamo l'evento con i dati inseriti
 	        Evento evento = new Evento(titolo, data, postiTotali);
+	        Artista artista1 = new Artista("System of a Down");
+	        Artista artista2 = new Artista("Pierce the Veil");
+	        Artista artista3 = new Artista("Green Day");
+	        Artista artista4 = new Artista("Fall Out Boy");
+	        Artista artista5 = new Artista("My Chemical Romance");
+
 	        
 	        //Chiediamo all'utente se vuole prenotare dei posti
 	        System.out.println("Vuoi effettuare una prenotazione per questo evento? (sì/no)");

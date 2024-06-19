@@ -26,6 +26,7 @@ public class UsoEvento {
 	        
 	        //Istanziamo l'evento con i dati inseriti
 	        Evento evento = new Evento(titolo, data, postiTotali);
+	        
 	        Artista artista1 = new Artista("System of a Down");
 	        Artista artista2 = new Artista("Pierce the Veil");
 	        Artista artista3 = new Artista("Green Day");
@@ -33,37 +34,52 @@ public class UsoEvento {
 	        Artista artista5 = new Artista("My Chemical Romance");
 
 	        
-	        //Chiediamo all'utente se vuole prenotare dei posti
-	        System.out.println("Vuoi effettuare una prenotazione per questo evento? (sì/no)");
-	        String rPrenotazione = scanner.nextLine();
-	        
-	        //Ciclo per prenotare con possibilità di prenotazioni multiple
-	        while (rPrenotazione.equalsIgnoreCase("sì")) { //ignorecase ovvero non importa se scrive in maiusc o minusc
-	            evento.prenota();
-	            //Chiediamo all'utente se vuole fare un'altra prenotazione
-	            System.out.println("Vuoi prenotare altri posti per questo evento? (sì/no)");
-	            rPrenotazione = scanner.nextLine();
-	        }
-	        
-	        //Stampa a video posti prenotati e disponibili
-	        System.out.println("Posti prenotati: " + evento.getPostiPrenotati());
-	        System.out.println("Posti disponibili: " + (evento.getPostiTotali() - evento.getPostiPrenotati()));
+	        // Ciclo per gestire prenotazioni, disdette e visualizzazione posti
+	        String operazione; //variabile per salvare scelta utente
+	        do { //ciclo do while finché l'utente non esce con la 4a opzione
+	            System.out.println("\nCosa desideri fare?");
+	            System.out.println("1. Prenotare posti");
+	            System.out.println("2. Disdire prenotazioni");
+	            System.out.println("3. Mostrare posti prenotati e disponibili");
+	            System.out.println("4. Uscire");
 
-	        
-	        System.out.println("Vuoi disdire delle prenotazioni? (s/n)");
-	        String rDisdetta = scanner.nextLine();
+	            operazione = scanner.nextLine();
 
-	        while (rDisdetta.equalsIgnoreCase("sì")) {
-	            evento.disdici();
-	            System.out.println("Disdetta effettuata.");
-	            System.out.println("Vuoi effettuare un'altra disdetta? (sì/no)");
-	            rDisdetta = scanner.nextLine();
-	        }
-	        
-	        //Stampare il numero di posti prenotati e disponibili dopo le disdette
-	        System.out.println("Posti prenotati dopo le disdette: " + evento.getPostiPrenotati());
-	        System.out.println("Posti disponibili dopo le disdette: " + (evento.getPostiTotali() - evento.getPostiPrenotati()));
-	        
+	            switch (operazione) {
+	                case "1":
+	                    // Prenotazione
+	                    System.out.println("Vuoi prenotare posti per questo evento? (sì/no)");
+	                    String rPrenotazione = scanner.nextLine();
+	                    while (rPrenotazione.equalsIgnoreCase("sì")) {
+	                        evento.prenota();
+	                        System.out.println("Vuoi prenotare altri posti per questo evento? (sì/no)");
+	                        rPrenotazione = scanner.nextLine();
+	                    }
+	                    break;
+	                case "2":
+	                    // Disdetta
+	                    System.out.println("Vuoi disdire delle prenotazioni? (sì/no)");
+	                    String rDisdetta = scanner.nextLine();
+	                    while (rDisdetta.equalsIgnoreCase("sì")) {
+	                        evento.disdici();
+	                        System.out.println("Vuoi effettuare un'altra disdetta? (sì/no)");
+	                        rDisdetta = scanner.nextLine();
+	                    }
+	                    break;
+	                case "3":
+	                    // Mostrare posti prenotati e disponibili
+	                    System.out.println("Posti prenotati: " + evento.getPostiPrenotati());
+	                    System.out.println("Posti disponibili: " + (evento.getPostiTotali() - evento.getPostiPrenotati()));
+	                    break;
+	                case "4":
+	                    // Uscita dal ciclo
+	                    System.out.println("Grazie per aver usato il sistema di prenotazione.");
+	                    break;
+	                default:
+	                    System.out.println("Scelta non valida, riprova.");
+	                    break;
+	            }
+	        } while (!operazione.equals("4"));
 	        scanner.close();
 	  }
 }

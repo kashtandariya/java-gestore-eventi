@@ -1,6 +1,7 @@
 package org.milestone;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class UsoEvento {
@@ -8,31 +9,50 @@ public class UsoEvento {
 	  public static void main(String[] args) {
 		  //metodo scanner per avere l'input dall'utente
 	        Scanner scanner = new Scanner(System.in);
-
+	        
+	        System.out.println("Benvenuto nel sistema di gestione eventi!");
+	        		
 	        //Chiediamo all'utente di inserire i parametri dell'evento
 	        System.out.println("Inserisci il titolo dell'evento: ");
 	        String titolo = scanner.nextLine();
-	        
+	       
 	        System.out.println("Inserisci la data dell'evento nel formato yyyy-mm-gg: ");
 	        LocalDate data = LocalDate.parse(scanner.nextLine()); //parse per convertire stringa e data
-	        
+	       
 	        System.out.println("Numero di posti totali: ");
 	        int postiTotali = scanner.nextInt();
 	        scanner.nextLine();
 	        /* Pulizia del newline nel buffer (cercato su internet perché non mi funzionava
 	        *quando chiedevo all'utente se voleva prenotare dei posti o meno, lo scanner si bloccava
 	        */
+	       
+	        System.out.println("Scegli il tipo di evento:");
+	        System.out.println("1. Evento generico");
+	        System.out.println("2. Concerto");
 
-	        
-	        //Istanziamo l'evento con i dati inseriti
-	        Evento evento = new Evento(titolo, data, postiTotali);
-	        
-	        Artista artista1 = new Artista("System of a Down");
-	        Artista artista2 = new Artista("Pierce the Veil");
-	        Artista artista3 = new Artista("Green Day");
-	        Artista artista4 = new Artista("Fall Out Boy");
-	        Artista artista5 = new Artista("My Chemical Romance");
+	        String scelta = scanner.nextLine();
 
+	        Evento evento = null;
+
+	        switch (scelta) {
+	            case "1":
+	                evento = new Evento(titolo, data, postiTotali);
+	                break;
+	            case "2":
+	                System.out.println("Inserisci l'ora del concerto nel formato HH:mm:ss: ");
+	                LocalTime ora = LocalTime.parse(scanner.nextLine());
+
+	                System.out.println("Inserisci il prezzo del concerto: ");
+	                double prezzo = scanner.nextDouble();
+	                scanner.nextLine(); // Pulizia del newline nel buffer
+
+	                evento = new Concerto(titolo, data, postiTotali, ora, prezzo);
+	                break;
+	            default:
+	                System.out.println("Scelta non valida. Uscita.");
+	                scanner.close();
+	                return;
+	        }
 	        
 	        // Ciclo per gestire prenotazioni, disdette e visualizzazione posti
 	        String operazione; //variabile per salvare scelta utente
@@ -67,7 +87,7 @@ public class UsoEvento {
 	                    }
 	                    break;
 	                case "3":
-	                    // Mostrare posti prenotati e disponibili
+	                    System.out.println(evento.toString()); // Utilizzo del metodo toString() sovrascritto
 	                    System.out.println("Posti prenotati: " + evento.getPostiPrenotati());
 	                    System.out.println("Posti disponibili: " + (evento.getPostiTotali() - evento.getPostiPrenotati()));
 	                    break;

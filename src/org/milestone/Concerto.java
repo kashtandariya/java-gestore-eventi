@@ -51,7 +51,7 @@ public class Concerto extends Evento {
     //Override del metodo toString()
     @Override
     public String toString() {
-        return getDataFormattata() + " " + getOraFormattata() + " - " + getTitolo() + " - " + getPrezzoFormattato() + " - " + getArtista();
+        return getDataFormattata() + " " + getOraFormattata() + " - " + getTitolo() + " - " + getPrezzoFormattato();
     }
 
 }

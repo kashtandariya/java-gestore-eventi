@@ -1,6 +1,7 @@
 package org.milestone;
 
 import java.time.LocalDate; //importa classe LocalDate aaaa/mm/gg
+import java.time.format.DateTimeFormatter;
 
 //classe evento con relativi attributi con visibilità privata
 public class Evento {
@@ -10,11 +11,10 @@ public class Evento {
 	private int postiPrenotati;
 
 	//costruttore Evento con attributi valorizzati tranne posti prenotati inizializzato a 0
-	public Evento(String titolo, LocalDate data, int postiTotali, int postiPrenotati) {
+	public Evento(String titolo, LocalDate data, int postiTotali) {
 	this.titolo = titolo;
 	this.data = data;
 	this.postiTotali = postiTotali;
-	this.postiPrenotati = 0;
 	}
 	
 	//incapsuliamo con getter e setter per proteggere i nostri dati
@@ -65,6 +65,7 @@ public class Evento {
     // Override del metodo toString()
     @Override
     public String toString() {
-        return data.toString() + " - " + titolo;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return data.format(formatter) + " - " + titolo;
     }
 }

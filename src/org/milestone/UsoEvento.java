@@ -34,11 +34,29 @@ public class UsoEvento {
 	        //Ciclo per prenotare con possibilità di prenotazioni multiple
 	        while (rPrenotazione.equalsIgnoreCase("sì")) { //ignorecase ovvero non importa se scrive in maiusc o minusc
 	            evento.prenota();
-
 	            //Chiediamo all'utente se vuole fare un'altra prenotazione
 	            System.out.println("Vuoi prenotare altri posti per questo evento? (sì/no)");
 	            rPrenotazione = scanner.nextLine();
 	        }
+	        
+	        //Stampa a video posti prenotati e disponibili
+	        System.out.println("Posti prenotati: " + evento.getPostiPrenotati());
+	        System.out.println("Posti disponibili: " + (evento.getPostiTotali() - evento.getPostiPrenotati()));
+
+	        
+	        System.out.println("Vuoi disdire delle prenotazioni? (s/n)");
+	        String rDisdetta = scanner.nextLine();
+
+	        while (rDisdetta.equalsIgnoreCase("sì")) {
+	            evento.disdici();
+	            System.out.println("Disdetta effettuata.");
+	            System.out.println("Vuoi effettuare un'altra disdetta? (sì/no)");
+	            rDisdetta = scanner.nextLine();
+	        }
+	        
+	        //Stampare il numero di posti prenotati e disponibili dopo le disdette
+	        System.out.println("Posti prenotati dopo le disdette: " + evento.getPostiPrenotati());
+	        System.out.println("Posti disponibili dopo le disdette: " + (evento.getPostiTotali() - evento.getPostiPrenotati()));
 	        
 	        scanner.close();
 	  }

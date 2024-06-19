@@ -29,10 +29,10 @@ STEP 2
 
 V Creare una classe Main di test, in cui si chiede all’utente di inserire un nuovo evento con tutti i parametri.
 V Dopo che l’evento è stato istanziato, chiedere all’utente se e quante prenotazioni vuole fare e provare ad effettuarle, implementando opportuni controlli
-Stampare a video il numero di posti prenotati e quelli disponibili
-Chiedere all’utente se e quanti posti vuole disdire
-Provare ad effettuare le disdette, implementando opportuni controlli
-Stampare a video il numero di posti prenotati e quelli disponibili
+V Stampare a video il numero di posti prenotati e quelli disponibili
+V Chiedere all’utente se e quanti posti vuole disdire
+V Provare ad effettuare le disdette, implementando opportuni controlli
+V Stampare a video il numero di posti prenotati e quelli disponibili
 ===============================================================================================
 Step 3
 

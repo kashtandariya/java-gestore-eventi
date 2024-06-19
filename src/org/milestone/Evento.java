@@ -15,6 +15,7 @@ public class Evento {
 	this.titolo = titolo;
 	this.data = data;
 	this.postiTotali = postiTotali;
+	this.postiPrenotati = 0; 
 	}
 	
 	//incapsuliamo con getter e setter per proteggere i nostri dati
@@ -42,9 +43,21 @@ public class Evento {
 		return postiPrenotati;
 	}
 	
+	private boolean controlloDataPassata() {
+	     return LocalDate.now().isAfter(data);
+	}
+
+	private boolean verificaPostiDisponibili() {
+	      return postiTotali < postiPrenotati;
+	}
+	
+	private boolean controlloPostiPrenotati() {
+		return postiPrenotati <= 0;
+	}
+	    
 	//Metodo per prenotare un posto
     public void prenota() {
-        if (LocalDate.now().isAfter(data) || postiPrenotati >= postiTotali) {
+        if (controlloDataPassata() || verificaPostiDisponibili()) {
             System.out.println("Impossibile prenotare. L'evento è già passato o non ci sono più posti disponibili.");
             return;
         }
@@ -54,7 +67,7 @@ public class Evento {
 
     //Metodo per disdire una prenotazione
     public void disdici() {
-        if (LocalDate.now().isAfter(data) || postiPrenotati <= 0) {
+        if (controlloDataPassata() || controlloPostiPrenotati()) {
             System.out.println("Impossibile disdire la prenotazione. L'evento è già passato o non ci sono prenotazioni.");
             return;
         }

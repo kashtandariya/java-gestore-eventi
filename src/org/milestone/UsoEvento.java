@@ -80,6 +80,7 @@ public class UsoEvento {
 	                    break;
 	            }
 	        } while (!operazione.equals("4"));
+	        
 	        scanner.close();
 	  }
 }
